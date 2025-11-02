@@ -1,0 +1,160 @@
+
+.doctor-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #8e44ad, #3498db);
+}
+
+.doctor-login-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+  color: #333;
+}
+
+.doctor-login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.doctor-login-form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.doctor-login-form button:hover {
+  opacity: 0.8;
+}
+
+
+.doctor-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #8e44ad, #3498db);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.doctor-info {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.doctor-info h3 {
+  margin-bottom: 10px;
+}
+
+.doctor-info p {
+  margin: 5px 0;
+}
+
+
+.patients-list {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+}
+
+.patients-list h3 {
+  margin-bottom: 10px;
+}
+
+.patients-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.patients-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.patients-list li:last-child {
+  border-bottom: none;
+}
+
+.patient-filter {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.patient-filter:focus {
+  outline: 2px solid #8e44ad;
+  box-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+}
+
+
+.patient-details {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+
+.patient-details h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #fff;
+}
+
+
+.patient-details p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #fff;
+}
+
+
+.patient-details button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.patient-details button:hover {
+  opacity: 0.8;
+}

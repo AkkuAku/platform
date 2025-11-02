@@ -1,0 +1,99 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  min-height: 100vh;
+  color: #fff;
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+.patient-info, .select-doctor {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.patient-info h3, .select-doctor h3 {
+  margin-bottom: 10px;
+}
+
+.select-doctor input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 15px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.select-doctor button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.select-doctor button:hover {
+  opacity: 0.8;
+}
+
+
+.doctor-info {
+  width: 90%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.doctor-info p {
+  margin: 0;
+}
+
+
+.doctor-info > p:first-child {
+  background-color: rgba(255,255,255,0.2);
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.doctor-info > p:first-child:hover {
+  background-color: rgba(255,255,255,0.35);
+}
+
+
+.doctor-details {
+  background-color: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.doctor-details p {
+  margin: 5px 0;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
