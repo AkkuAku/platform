@@ -90,6 +90,33 @@ h2 {
 .doctor-details p {
   margin: 5px 0;
 }
+/* Общий стиль кнопок */
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+  background: linear-gradient(135deg, #8e44ad, #3498db);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект при наведении */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+}
+
+/* Эффект при нажатии */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
 
 @keyframes fadeIn {

@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DoctorDashboard.css";
 
 const DoctorDashboard = () => {
-  const patientsData = {
-    doctor1: [
-      { id: 101, name: "Алексей Сидоров", age: 30, diagnosis: "Грипп", phone: "+7 700 111-22-33" },
-      { id: 102, name: "Ольга Кузнецова", age: 25, diagnosis: "Аллергия", phone: "+7 701 222-33-44" },
-    ],
-    doctor2: [
-      { id: 103, name: "Мария Иванова", age: 40, diagnosis: "Гипертония", phone: "+7 702 333-44-55" },
-      { id: 104, name: "Дмитрий Петров", age: 35, diagnosis: "Диабет", phone: "+7 703 444-55-66" },
-    ],
-  };
+  const [filterId, setFilterId] = useState("");
+  const [selectedPatient, setSelectedPatient] = useState(null);
+  const [patients, setPatients] = useState([]);
 
-  const [filterId, setFilterId] = useState(""); 
-  const [selectedPatient, setSelectedPatient] = useState(null); 
-
-
+  
   const username = localStorage.getItem("username") || "";
   const doctorName = localStorage.getItem("doctorName") || "";
   const specialization = localStorage.getItem("doctorSpecialization") || "";
@@ -24,8 +14,19 @@ const DoctorDashboard = () => {
   const phone = localStorage.getItem("doctorPhone") || "";
   const email = localStorage.getItem("doctorEmail") || "";
 
- 
-  const patients = patientsData[username] || [];
+
+  const doctorId =
+    username === "doctor1" ? 1 : username === "doctor2" ? 2 : null;
+
+  
+  useEffect(() => {
+    if (doctorId) {
+      fetch(`http://localhost:5000/api/doctor/${doctorId}/patients`)
+        .then((res) => res.json())
+        .then((data) => setPatients(data))
+        .catch((err) => console.error("Ошибка загрузки пациентов:", err));
+    }
+  }, [doctorId]);
 
   
   const filteredPatients = patients.filter((p) =>
@@ -38,16 +39,28 @@ const DoctorDashboard = () => {
 
       <div className="doctor-info">
         <h3>Информация о враче</h3>
-        <p><strong>Имя:</strong> {doctorName}</p>
-        <p><strong>Логин:</strong> {username}</p>
-        <p><strong>Специализация:</strong> {specialization}</p>
-        <p><strong>Опыт:</strong> {experience} лет</p>
-        <p><strong>Телефон:</strong> {phone}</p>
-        <p><strong>Email:</strong> {email}</p>
+        <p>
+          <strong>Имя:</strong> {doctorName}
+        </p>
+        <p>
+          <strong>Логин:</strong> {username}
+        </p>
+        <p>
+          <strong>Специализация:</strong> {specialization}
+        </p>
+        <p>
+          <strong>Опыт:</strong> {experience} лет
+        </p>
+        <p>
+          <strong>Телефон:</strong> {phone}
+        </p>
+        <p>
+          <strong>Email:</strong> {email}
+        </p>
       </div>
 
       <div className="patients-list">
-        <h3>Пациенты</h3>
+        <h3>Прикреплённые пациенты</h3>
         <input
           type="number"
           placeholder="Поиск по ID пациента..."
@@ -58,11 +71,15 @@ const DoctorDashboard = () => {
 
         <ul>
           {filteredPatients.length === 0 ? (
-            <li>Пациенты не найдены</li>
+            <li>Пока нет прикреплённых пациентов</li>
           ) : (
             filteredPatients.map((p) => (
-              <li key={p.id} onClick={() => setSelectedPatient(p)} style={{ cursor: "pointer" }}>
-                {p.name} (ID: {p.id})
+              <li
+                key={p.id}
+                onClick={() => setSelectedPatient(p)}
+                style={{ cursor: "pointer" }}
+              >
+                {p.fullName || p.name} (ID: {p.id})
               </li>
             ))
           )}
@@ -72,11 +89,13 @@ const DoctorDashboard = () => {
       {selectedPatient && (
         <div className="patient-details">
           <h3>Детали пациента</h3>
-          <p><strong>Имя:</strong> {selectedPatient.name}</p>
-          <p><strong>ID:</strong> {selectedPatient.id}</p>
-          <p><strong>Возраст:</strong> {selectedPatient.age}</p>
-          <p><strong>Диагноз:</strong> {selectedPatient.diagnosis}</p>
-          <p><strong>Телефон:</strong> {selectedPatient.phone}</p>
+          <p>
+            <strong>Имя:</strong> {selectedPatient.fullName || selectedPatient.name}
+          </p>
+          <p>
+            <strong>ID:</strong> {selectedPatient.id}
+          </p>
+         
           <button onClick={() => setSelectedPatient(null)}>Закрыть</button>
         </div>
       )}
@@ -85,6 +104,3 @@ const DoctorDashboard = () => {
 };
 
 export default DoctorDashboard;
-
-
-
